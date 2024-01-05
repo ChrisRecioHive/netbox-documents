@@ -1,7 +1,22 @@
 import django_tables2 as tables
 
 from netbox.tables import NetBoxTable, columns
-from .models import SiteDocument, LocationDocument, DeviceDocument, DeviceTypeDocument, CircuitDocument 
+from .models import (
+    CableDocument,
+    SiteDocument,
+    LocationDocument,
+    DeviceDocument,
+    DeviceTypeDocument,
+    CircuitDocument,
+)
+
+CABLE_DOCUMENT_LINK = """
+{% if record.size %}
+    <a href="{% url 'plugins:netbox_documents:cabledocument' pk=record.pk %}">{% firstof record.name record.filename %}</a> (<a href="{{record.document.url}}" target="_blank">View Document</a>)
+{% else %}
+    <a href="{% url 'plugins:netbox_documents:cabledocument' pk=record.pk %}">{% firstof record.name record.filename %}</a> (<a href="{{ record.external_url }}" target="_blank">View External Document</a>)
+{% endif %}
+"""
 
 SITE_DOCUMENT_LINK = """
 {% if record.size %}
@@ -43,86 +58,160 @@ DEVICE_TYPE_DOCUMENT_LINK = """
 {% endif %}
 """
 
-class SiteDocumentTable(NetBoxTable):
-    name = tables.TemplateColumn(template_code=SITE_DOCUMENT_LINK)
-    document_type = columns.ChoiceFieldColumn()
-    site = tables.Column(
-        linkify=True
-    )
 
-    tags = columns.TagColumn(
-        url_name='plugins:netbox_documents:sitedocument_list'
-    )
+class CableDocumentTable(NetBoxTable):
+    name = tables.TemplateColumn(template_code=CABLE_DOCUMENT_LINK)
+    document_type = columns.ChoiceFieldColumn()
+    site = tables.Column(linkify=True)
+
+    tags = columns.TagColumn(url_name="plugins:netbox_documents:cabledocument_list")
 
     class Meta(NetBoxTable.Meta):
         model = SiteDocument
-        fields = ('pk', 'id', 'name', 'document_type',  'size', 'filename', 'site', 'comments', 'actions', 'created', 'last_updated', 'tags')
-        default_columns = ('name', 'document_type', 'site', 'tags')
+        fields = (
+            "pk",
+            "id",
+            "name",
+            "document_type",
+            "size",
+            "filename",
+            "cable",
+            "comments",
+            "actions",
+            "created",
+            "last_updated",
+            "tags",
+        )
+        default_columns = ("name", "document_type", "cable", "tags")
+
+
+class SiteDocumentTable(NetBoxTable):
+    name = tables.TemplateColumn(template_code=SITE_DOCUMENT_LINK)
+    document_type = columns.ChoiceFieldColumn()
+    site = tables.Column(linkify=True)
+
+    tags = columns.TagColumn(url_name="plugins:netbox_documents:sitedocument_list")
+
+    class Meta(NetBoxTable.Meta):
+        model = SiteDocument
+        fields = (
+            "pk",
+            "id",
+            "name",
+            "document_type",
+            "size",
+            "filename",
+            "site",
+            "comments",
+            "actions",
+            "created",
+            "last_updated",
+            "tags",
+        )
+        default_columns = ("name", "document_type", "site", "tags")
+
 
 class LocationDocumentTable(NetBoxTable):
     name = tables.TemplateColumn(template_code=LOCATION_DOCUMENT_LINK)
     document_type = columns.ChoiceFieldColumn()
-    site = tables.Column(
-        linkify=True
-    )
-    location = tables.Column(
-        linkify=True
-    )
+    site = tables.Column(linkify=True)
+    location = tables.Column(linkify=True)
 
-    tags = columns.TagColumn(
-        url_name='plugins:netbox_documents:locationdocument_list'
-    )
+    tags = columns.TagColumn(url_name="plugins:netbox_documents:locationdocument_list")
 
     class Meta(NetBoxTable.Meta):
         model = LocationDocument
-        fields = ('pk', 'id', 'name', 'document_type',  'size', 'filename', 'site', 'location', 'comments', 'actions', 'created', 'last_updated', 'tags')
-        default_columns = ('name', 'document_type', 'site', 'location', 'tags')
+        fields = (
+            "pk",
+            "id",
+            "name",
+            "document_type",
+            "size",
+            "filename",
+            "site",
+            "location",
+            "comments",
+            "actions",
+            "created",
+            "last_updated",
+            "tags",
+        )
+        default_columns = ("name", "document_type", "site", "location", "tags")
+
 
 class DeviceDocumentTable(NetBoxTable):
     name = tables.TemplateColumn(template_code=DEVICE_DOCUMENT_LINK)
     document_type = columns.ChoiceFieldColumn()
-    device = tables.Column(
-        linkify=True
-    )
+    device = tables.Column(linkify=True)
 
-    tags = columns.TagColumn(
-        url_name='dcim:sitegroup_list'
-    )
+    tags = columns.TagColumn(url_name="dcim:sitegroup_list")
 
     class Meta(NetBoxTable.Meta):
         model = DeviceDocument
-        fields = ('pk', 'id', 'name', 'document_type',  'size', 'filename', 'device', 'comments', 'actions', 'created', 'last_updated', 'tags')
-        default_columns = ('name', 'document_type', 'device', 'tags')
+        fields = (
+            "pk",
+            "id",
+            "name",
+            "document_type",
+            "size",
+            "filename",
+            "device",
+            "comments",
+            "actions",
+            "created",
+            "last_updated",
+            "tags",
+        )
+        default_columns = ("name", "document_type", "device", "tags")
 
 
 class DeviceTypeDocumentTable(NetBoxTable):
     name = tables.TemplateColumn(template_code=DEVICE_TYPE_DOCUMENT_LINK)
     document_type = columns.ChoiceFieldColumn()
-    device_type = tables.Column(
-        linkify=True
-    )
+    device_type = tables.Column(linkify=True)
 
-    tags = columns.TagColumn(
-        url_name='dcim:sitegroup_list'
-    )
+    tags = columns.TagColumn(url_name="dcim:sitegroup_list")
 
     class Meta(NetBoxTable.Meta):
         model = DeviceTypeDocument
-        fields = ('pk', 'id', 'name', 'document_type',  'size', 'filename', 'device_type', 'comments', 'actions', 'created', 'last_updated', 'tags')
-        default_columns = ('name', 'document_type', 'device_type', 'tags')
+        fields = (
+            "pk",
+            "id",
+            "name",
+            "document_type",
+            "size",
+            "filename",
+            "device_type",
+            "comments",
+            "actions",
+            "created",
+            "last_updated",
+            "tags",
+        )
+        default_columns = ("name", "document_type", "device_type", "tags")
+
 
 class CircuitDocumentTable(NetBoxTable):
     name = tables.TemplateColumn(template_code=CIRCUIT_DOCUMENT_LINK)
     document_type = columns.ChoiceFieldColumn()
-    circuit = tables.Column(
-        linkify=True
-    )
+    circuit = tables.Column(linkify=True)
 
-    tags = columns.TagColumn(
-        url_name='dcim:sitegroup_list'
-    )
+    tags = columns.TagColumn(url_name="dcim:sitegroup_list")
 
     class Meta(NetBoxTable.Meta):
         model = CircuitDocument
-        fields = ('pk', 'id', 'name', 'document_type',  'size', 'filename', 'circuit', 'comments', 'actions', 'created', 'last_updated', 'tags')
-        default_columns = ('name', 'document_type', 'circuit', 'tags')
+        fields = (
+            "pk",
+            "id",
+            "name",
+            "document_type",
+            "size",
+            "filename",
+            "circuit",
+            "comments",
+            "actions",
+            "created",
+            "last_updated",
+            "tags",
+        )
+        default_columns = ("name", "document_type", "circuit", "tags")

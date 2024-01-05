@@ -1,9 +1,25 @@
 from netbox.search import SearchIndex
-from .models import SiteDocument, LocationDocument, DeviceDocument, DeviceTypeDocument, CircuitDocument 
+from .models import (
+    CableDocument,
+    SiteDocument,
+    LocationDocument,
+    DeviceDocument,
+    DeviceTypeDocument,
+    CircuitDocument,
+)
 from django.conf import settings
 
-# If we run NB 3.4+ register search indexes 
-if settings.VERSION >= '3.4.0':
+# If we run NB 3.4+ register search indexes
+if settings.VERSION >= "3.4.0":
+
+    class CableDocumentIndex(SearchIndex):
+        model = CableDocument
+        fields = (
+            ("name", 100),
+            ("document", 500),
+            ("comments", 5000),
+        )
+
     class SiteDocumentIndex(SearchIndex):
         model = SiteDocument
         fields = (
@@ -45,4 +61,11 @@ if settings.VERSION >= '3.4.0':
         )
 
     # Register indexes
-    indexes = [SiteDocumentIndex, LocationDocumentIndex, CircuitDocumentIndex, DeviceTypeDocumentIndex, DeviceDocumentIndex]
+    indexes = [
+        CableDocumentIndex,
+        SiteDocumentIndex,
+        LocationDocumentIndex,
+        CircuitDocumentIndex,
+        DeviceTypeDocumentIndex,
+        DeviceDocumentIndex,
+    ]
