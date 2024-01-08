@@ -9,6 +9,7 @@ from ..models import (
     CircuitDocument,
 )
 from dcim.api.nested_serializers import (
+    NestedCableSerializer,
     NestedSiteSerializer,
     NestedLocationSerializer,
     NestedDeviceSerializer,
@@ -24,7 +25,7 @@ class CableDocumentSerializer(NetBoxModelSerializer):
         view_name="plugins-api:netbox_documents-api:cabledocument-detail"
     )
 
-    site = NestedSiteSerializer()
+    site = NestedCableSerializer()
     document = UploadableBase64FileField(required=False)
 
     class Meta:

@@ -241,6 +241,7 @@ class CircuitDocumentList(PluginTemplateExtension):
 
 
 template_extensions = [
+    CableDocumentList,
     SiteDocumentList,
     LocationDocumentList,
     DeviceDocumentList,

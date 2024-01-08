@@ -13,7 +13,7 @@ from django.db.models import Q
 class CableDocumentFilterSet(NetBoxModelFilterSet):
     class Meta:
         model = CableDocument
-        fields = ("id", "name", "document_type", "site")
+        fields = ("id", "name", "document_type", "cable")
 
     def search(self, queryset, name, value):
         if not value.strip():
