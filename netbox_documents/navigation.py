@@ -12,7 +12,7 @@ if plugin_settings.get("enable_navigation_menu"):
         menuitem.append(
             PluginMenuItem(
                 link="plugins:netbox_documents:cabledocument_list",
-                link_text="Site Documents",
+                link_text="Cable Documents",
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:cabledocument_add",

@@ -4,6 +4,7 @@ from dcim.models import Cable, Site, Location, Device, DeviceType
 from circuits.models import Circuit
 from utilities.forms.fields import TagFilterField, CommentField, DynamicModelChoiceField
 from .models import (
+    CableDocument,
     SiteDocument,
     LocationDocument,
     DeviceDocument,
@@ -24,7 +25,7 @@ class CableDocumentForm(NetBoxModelForm):
     site = DynamicModelChoiceField(queryset=Cable.objects.all())
 
     class Meta:
-        model = SiteDocument
+        model = CableDocument
         fields = (
             "name",
             "document",
@@ -37,7 +38,7 @@ class CableDocumentForm(NetBoxModelForm):
 
 
 class CableDocumentFilterForm(NetBoxModelFilterSetForm):
-    model = SiteDocument
+    model = CableDocument
 
     name = forms.CharField(required=False)
 
