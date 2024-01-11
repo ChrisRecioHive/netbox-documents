@@ -24,7 +24,7 @@ class CableDocumentList(PluginTemplateExtension):
                 "netbox_documents/cabledocument_include.html",
                 extra_context={
                     "cable_documents": CableDocument.objects.filter(
-                        site=self.context["object"]
+                        cable=self.context["object"]
                     ),
                 },
             )
@@ -41,7 +41,7 @@ class CableDocumentList(PluginTemplateExtension):
                 "netbox_documents/cabledocument_include.html",
                 extra_context={
                     "cable_documents": CableDocument.objects.filter(
-                        site=self.context["object"]
+                        cable=self.context["object"]
                     ),
                 },
             )

@@ -5,32 +5,32 @@ from netbox.views.generic import ObjectChangeLogView
 urlpatterns = (
     # CableDocument
     path(
-        "site-document/",
+        "cable-document/",
         views.CableDocumentListView.as_view(),
         name="cabledocument_list",
     ),
     path(
-        "site-document/add/",
+        "cable-document/add/",
         views.CableDocumentEditView.as_view(),
         name="cabledocument_add",
     ),
     path(
-        "site-document/<int:pk>/",
+        "cable-document/<int:pk>/",
         views.CableDocumentView.as_view(),
         name="cabledocument",
     ),
     path(
-        "site-document/<int:pk>/edit/",
+        "cable-document/<int:pk>/edit/",
         views.CableDocumentEditView.as_view(),
         name="cabledocument_edit",
     ),
     path(
-        "site-document/<int:pk>/delete/",
+        "cable-document/<int:pk>/delete/",
         views.CableDocumentDeleteView.as_view(),
         name="cabledocument_delete",
     ),
     path(
-        "site-document/<int:pk>/changelog/",
+        "cable-document/<int:pk>/changelog/",
         ObjectChangeLogView.as_view(),
         name="cabledocument_changelog",
         kwargs={"model": models.CableDocument},

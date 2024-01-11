@@ -25,7 +25,7 @@ class CableDocumentSerializer(NetBoxModelSerializer):
         view_name="plugins-api:netbox_documents-api:cabledocument-detail"
     )
 
-    site = NestedCableSerializer()
+    cable = NestedCableSerializer()
     document = UploadableBase64FileField(required=False)
 
     class Meta:

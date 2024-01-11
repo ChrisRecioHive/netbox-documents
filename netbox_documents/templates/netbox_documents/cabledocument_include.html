@@ -23,15 +23,15 @@
                         class="text-muted">—</span>{% endif %}</td>
                 <td>{% badge document.get_document_type_display bg_color=document.get_document_type_color %}</td>
                 <td class="text-end noprint">
-                    <a href="{% url 'plugins:netbox_documents:sitedocument' pk=document.pk %}"
+                    <a href="{% url 'plugins:netbox_documents:cabledocument' pk=document.pk %}"
                         class="btn btn-primary btn-sm lh-1" title="View Document">
                         <i class="mdi mdi-book" aria-hidden="true"></i>
                     </a>
-                    <a href="{% url 'plugins:netbox_documents:sitedocument_edit' pk=document.pk %}?return_url={% url 'dcim:site' pk=object.pk %}"
+                    <a href="{% url 'plugins:netbox_documents:cabledocument_edit' pk=document.pk %}?return_url={% url 'dcim:cable' pk=object.pk %}"
                         class="btn btn-warning btn-sm lh-1" title="Edit Document">
                         <i class="mdi mdi-pencil" aria-hidden="true"></i>
                     </a>
-                    <a href="{% url 'plugins:netbox_documents:sitedocument_delete' pk=document.pk %}?return_url={% url 'dcim:site' pk=object.pk %}"
+                    <a href="{% url 'plugins:netbox_documents:cabledocument_delete' pk=document.pk %}?return_url={% url 'dcim:cable' pk=object.pk %}"
                         class="btn btn-danger btn-sm lh-1" title="Delete Document">
                         <i class="mdi mdi-trash-can-outline" aria-hidden="true"></i>
                     </a>
@@ -52,5 +52,4 @@
             Add Document
         </a>
     </div>
-
 </div>

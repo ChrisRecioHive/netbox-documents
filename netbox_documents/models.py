@@ -107,7 +107,7 @@ class CableDocument(NetBoxModel):
         verbose_name = "Cable Document"
 
     def get_document_type_color(self):
-        return SiteDocTypeChoices.colors.get(self.document_type)
+        return CableDocTypeChoices.colors.get(self.document_type)
 
     @property
     def size(self):

@@ -11,6 +11,7 @@ from .models import (
     DeviceTypeDocument,
     CircuitDocument,
     CircuitDocTypeChoices,
+    CableDocTypeChoices,
     SiteDocTypeChoices,
     LocationDocTypeChoices,
     DeviceDocTypeChoices,
@@ -22,7 +23,7 @@ from .models import (
 class CableDocumentForm(NetBoxModelForm):
     comments = CommentField()
 
-    site = DynamicModelChoiceField(queryset=Cable.objects.all())
+    cable = DynamicModelChoiceField(queryset=Cable.objects.all())
 
     class Meta:
         model = CableDocument
@@ -42,10 +43,10 @@ class CableDocumentFilterForm(NetBoxModelFilterSetForm):
 
     name = forms.CharField(required=False)
 
-    site = forms.ModelMultipleChoiceField(queryset=Cable.objects.all(), required=False)
+    cable = forms.ModelMultipleChoiceField(queryset=Cable.objects.all(), required=False)
 
     document_type = forms.MultipleChoiceField(
-        choices=SiteDocTypeChoices, required=False
+        choices=CableDocTypeChoices, required=False
     )
 
     tag = TagFilterField(model)
