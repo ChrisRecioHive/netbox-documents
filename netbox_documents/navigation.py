@@ -7,23 +7,6 @@ plugin_settings = settings.PLUGINS_CONFIG.get("netbox_documents", {})
 if plugin_settings.get("enable_navigation_menu"):
     menuitem = []
 
-    # Add a menu item for Cable Documents if enabled
-    if plugin_settings.get("enable_cable_documents"):
-        menuitem.append(
-            PluginMenuItem(
-                link="plugins:netbox_documents:cabledocument_list",
-                link_text="Cable Documents",
-                buttons=[
-                    PluginMenuButton(
-                        link="plugins:netbox_documents:cabledocument_add",
-                        title="Add",
-                        icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
-                    )
-                ],
-            )
-        )
-
     # Add a menu item for Site Documents if enabled
     if plugin_settings.get("enable_site_documents"):
         menuitem.append(
@@ -84,6 +67,23 @@ if plugin_settings.get("enable_navigation_menu"):
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:devicetypedocument_add",
+                        title="Add",
+                        icon_class="mdi mdi-plus-thick",
+                        color=ButtonColorChoices.GREEN,
+                    )
+                ],
+            )
+        )
+        
+    # Add a menu item for Cable Documents if enabled
+    if plugin_settings.get("enable_cable_documents"):
+        menuitem.append(
+            PluginMenuItem(
+                link="plugins:netbox_documents:cabledocument_list",
+                link_text="Cable Documents",
+                buttons=[
+                    PluginMenuButton(
+                        link="plugins:netbox_documents:cabledocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
                         color=ButtonColorChoices.GREEN,
