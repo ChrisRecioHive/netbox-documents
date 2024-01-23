@@ -67,7 +67,7 @@ class CableDocumentTable(NetBoxTable):
     tags = columns.TagColumn(url_name="plugins:netbox_documents:cabledocument_list")
 
     class Meta(NetBoxTable.Meta):
-        model = SiteDocument
+        model = CableDocument
         fields = (
             "pk",
             "id",
