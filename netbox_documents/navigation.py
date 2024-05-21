@@ -1,5 +1,5 @@
-from extras.plugins import PluginMenuItem, PluginMenu, PluginMenuButton
-from utilities.choices import ButtonColorChoices
+from netbox.plugins import PluginMenuItem, PluginMenu, PluginMenuButton
+from netbox.choices import ButtonColorChoices
 from django.conf import settings
 
 plugin_settings = settings.PLUGINS_CONFIG.get("netbox_documents", {})
@@ -18,7 +18,6 @@ if plugin_settings.get("enable_navigation_menu"):
                         link="plugins:netbox_documents:sitedocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
                     )
                 ],
             )
@@ -35,7 +34,6 @@ if plugin_settings.get("enable_navigation_menu"):
                         link="plugins:netbox_documents:locationdocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
                     )
                 ],
             )
@@ -52,7 +50,6 @@ if plugin_settings.get("enable_navigation_menu"):
                         link="plugins:netbox_documents:devicedocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
                     )
                 ],
             )
@@ -69,12 +66,11 @@ if plugin_settings.get("enable_navigation_menu"):
                         link="plugins:netbox_documents:devicetypedocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
                     )
                 ],
             )
         )
-        
+
     # Add a menu item for Cable Documents if enabled
     if plugin_settings.get("enable_cable_documents"):
         menuitem.append(
@@ -86,7 +82,6 @@ if plugin_settings.get("enable_navigation_menu"):
                         link="plugins:netbox_documents:cabledocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
                     )
                 ],
             )
@@ -103,7 +98,6 @@ if plugin_settings.get("enable_navigation_menu"):
                         link="plugins:netbox_documents:circuitdocument_add",
                         title="Add",
                         icon_class="mdi mdi-plus-thick",
-                        color=ButtonColorChoices.GREEN,
                     )
                 ],
             )
