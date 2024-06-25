@@ -13,6 +13,7 @@ if plugin_settings.get("enable_navigation_menu"):
             PluginMenuItem(
                 link="plugins:netbox_documents:sitedocument_list",
                 link_text="Site Documents",
+                staff_only = True,
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:sitedocument_add",
@@ -29,6 +30,7 @@ if plugin_settings.get("enable_navigation_menu"):
             PluginMenuItem(
                 link="plugins:netbox_documents:locationdocument_list",
                 link_text="Location Documents",
+                staff_only = True,
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:locationdocument_add",
@@ -45,6 +47,7 @@ if plugin_settings.get("enable_navigation_menu"):
             PluginMenuItem(
                 link="plugins:netbox_documents:devicedocument_list",
                 link_text="Device Documents",
+                staff_only = True,
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:devicedocument_add",
@@ -61,6 +64,7 @@ if plugin_settings.get("enable_navigation_menu"):
             PluginMenuItem(
                 link="plugins:netbox_documents:devicetypedocument_list",
                 link_text="Device Type Documents",
+                staff_only = True,
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:devicetypedocument_add",
@@ -77,6 +81,7 @@ if plugin_settings.get("enable_navigation_menu"):
             PluginMenuItem(
                 link="plugins:netbox_documents:cabledocument_list",
                 link_text="Cable Documents",
+                staff_only = True,
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:cabledocument_add",
@@ -93,6 +98,7 @@ if plugin_settings.get("enable_navigation_menu"):
             PluginMenuItem(
                 link="plugins:netbox_documents:circuitdocument_list",
                 link_text="Circuit Documents",
+                staff_only = True,
                 buttons=[
                     PluginMenuButton(
                         link="plugins:netbox_documents:circuitdocument_add",
