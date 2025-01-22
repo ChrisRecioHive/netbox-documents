@@ -7,10 +7,10 @@ class NetboxDocuments(PluginConfig):
     description = (
         "Manage site, location, circuit and device diagrams and documents in Netbox"
     )
-    version = "0.6.3"
+    version = "0.7.1"
     author = "Jason Yates"
     author_email = "me@jasonyates.co.uk"
-    min_version = "3.5.0"
+    min_version = "4.2.0"
     base_url = "documents"
     default_settings = {
         "enable_cable_documents": True,

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.1 (2024-06-19)
+
+* Adds support for Netbox 4.2 - PR #71 (Thanks @a084ed22)
+
 ## 0.6.3 (2023-11-21)
 
 * Fix requirements include on install
@@ -51,3 +55,4 @@
 ## 0.3.0 (2022-04-04)
 
 * Initial Release
+
